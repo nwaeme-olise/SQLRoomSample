@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import aaa.app.android.sqlroomsample.R
 import aaa.app.android.sqlroomsample.databinding.FragmentSignInBinding
+import androidx.appcompat.app.AppCompatActivity
 
 
 class SignInFragment : Fragment() {
@@ -22,5 +23,18 @@ class SignInFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        (requireActivity() as AppCompatActivity).supportActionBar?.hide()
+    }
 
+    override fun onStop() {
+        super.onStop()
+        (requireActivity() as AppCompatActivity).supportActionBar?.show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
